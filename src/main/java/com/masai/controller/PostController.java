@@ -58,16 +58,14 @@ public class PostController {
          return new ResponseEntity<>(message,HttpStatus.ACCEPTED);         
      }
 	 
-	 @GetMapping("/sorting/{field}")
-	 ResponseEntity<List<Post>> paginationAndSorting(@PathVariable String field){
-         List<Post> posts =  service.paginationaAndSorting(field);         
-         return new ResponseEntity<>(posts,HttpStatus.ACCEPTED);         
+	
+	 //http://localhost:8888/api/posts/paginationAndSorting/1?pageSize=2&sortingField=title&sortingDirection=DESC
+	 @GetMapping("/paginationAndSorting")
+	 ResponseEntity<Page<Post>> paginationAndSorting(@RequestParam(required = false, defaultValue = "") Integer pageNo,@RequestParam(required = false, defaultValue = "10")  Integer pageSize,@RequestParam(required = false, defaultValue = "title") String sortingField,@RequestParam(required = false , defaultValue = "ASC") String sortingDirection){
+         Page<Post> page =  service.paginationAndSorting(pageNo, pageSize, sortingField, sortingDirection);         
+         return new ResponseEntity<>(page,HttpStatus.ACCEPTED);         
      }
 	 
-	 @GetMapping("/page/{offset}/{pagesize}")
-	 ResponseEntity<Page<Post>> pageSize(@PathVariable Integer offset,@PathVariable Integer pagesize){
-         Page<Post> posts =  service.pagesize(offset, pagesize);         
-         return new ResponseEntity<>(posts,HttpStatus.ACCEPTED);         
-     }
+	 
 	 
 }

@@ -1,6 +1,7 @@
 package com.masai.service;
 
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -88,13 +89,15 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<Post> paginationaAndSorting(String field) {
-		return repo.findAll(Sort.by(Direction.ASC, field));
+	public Page<Post> paginationAndSorting(Integer pageNo, Integer pageSize, String sortingField,
+			String sortDirection) {
+		
+		Sort sort = sortDirection.equals(Sort.Direction.ASC.name()) ? Sort.by(sortingField).ascending():
+			Sort.by(sortingField).descending();
+		
+		org.springframework.data.domain.Pageable pageable = PageRequest.of(pageNo - 1,pageSize,sort);
+		return repo.findAll(pageable);
 	}
-	
-	public Page<Post> pagesize(Integer offset, Integer pageSize){
-		Page<Post> post = repo.findAll(PageRequest.of(offset, pageSize));
-        return post;
-	}
+
 
 }
