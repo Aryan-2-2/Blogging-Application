@@ -1,7 +1,7 @@
 package com.masai.service;
 
 
-import java.awt.print.Pageable;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.masai.dao.PostDao;
@@ -22,6 +21,7 @@ public class PostServiceImpl implements PostService {
 
 	@Autowired
 	PostDao repo;
+	
 	
 	@Override
 	public String createPost(Post post) {

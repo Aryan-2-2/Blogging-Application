@@ -1,5 +1,6 @@
 package com.masai.model;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import javax.persistence.CascadeType;
@@ -9,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,7 +31,12 @@ public class Comment {
 	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
+	@NotNull(message = "comment should not be null")
 	private String comment;
+	
+	@CreationTimestamp
+	private LocalDateTime createdAt;
 	
     @JsonIgnore
 	@ManyToOne

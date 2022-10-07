@@ -2,6 +2,7 @@ package com.masai.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.masai.model.Post;
 import com.masai.service.PostServiceImpl;
 
+import lombok.val;
+
 @RestController
 @RequestMapping("/api/posts")
 public class PostController {
@@ -29,7 +32,7 @@ public class PostController {
 	 PostServiceImpl service;
 	
 	 @PostMapping("/")
-	 ResponseEntity<String> createPost(@RequestBody Post post){
+	 ResponseEntity<String> createPost(@Valid @RequestBody Post post){
 	         String message =  service.createPost(post);         
 	         return new ResponseEntity<>(message,HttpStatus.CREATED);         
 	 }
