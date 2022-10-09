@@ -25,6 +25,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.bytebuddy.utility.nullability.AlwaysNull;
 
 @Setter
 @Getter
@@ -45,11 +46,10 @@ public class Post {
 	@NotNull(message = "body should not be null")
 	private String body;
 	
-	@CreationTimestamp
+    @CreationTimestamp
 	private LocalDateTime createdAt;
+
 	
-	@CreationTimestamp
-	private LocalDateTime updateAt;
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "post")

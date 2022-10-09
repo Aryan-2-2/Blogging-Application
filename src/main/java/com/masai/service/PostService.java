@@ -9,7 +9,7 @@ import com.masai.model.Post;
 
 public interface PostService {
 
-	public String createPost(Post post);
+	public Post createPost(Post post);
 	public List<Post> getAllPost();
 	public Post getPostById(Integer Id);
 	public Post updatePostById(Post post ,Integer Id);

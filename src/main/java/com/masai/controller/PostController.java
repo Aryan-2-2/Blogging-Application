@@ -32,9 +32,9 @@ public class PostController {
 	 PostServiceImpl service;
 	
 	 @PostMapping("/")
-	 ResponseEntity<String> createPost(@Valid @RequestBody Post post){
-	         String message =  service.createPost(post);         
-	         return new ResponseEntity<>(message,HttpStatus.CREATED);         
+	 ResponseEntity<Post> createPost(@Valid @RequestBody Post post){
+	        Post  post1 =  service.createPost(post);         
+	         return new ResponseEntity<>(post1,HttpStatus.CREATED);         
 	 }
 	
 	 @GetMapping("/")

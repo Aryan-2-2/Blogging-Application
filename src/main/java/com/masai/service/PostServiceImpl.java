@@ -2,6 +2,7 @@ package com.masai.service;
 
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,16 +25,19 @@ public class PostServiceImpl implements PostService {
 	
 	
 	@Override
-	public String createPost(Post post) {
+	public Post createPost(Post post) {
 		
 		
 		  Optional<Post> fetched_post  = repo.findById(post.getId());
 		  if(fetched_post.isPresent()) {
 			  throw new PostAlreadyPresentException("Post is already present");
 		  }
-		  
+		 
 		  repo.save(post);
-		  return "Post saved successfully...";
+		 // return "Post saved successfully...";
+	    
+		  return post;
+	
 	}
 
 	@Override
@@ -67,7 +71,6 @@ public class PostServiceImpl implements PostService {
 			  throw new PostNotFoundException("Post not found with given ID");
 		  }
 		  
-		
 		  repo.save(post);
 		  return post;
 		  
