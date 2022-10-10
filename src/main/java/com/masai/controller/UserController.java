@@ -1,5 +1,7 @@
 package com.masai.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +20,8 @@ public class UserController {
 	UserServiceImpl service;
 	
 	@PostMapping("/registration")
-	ResponseEntity<String> createUser(@RequestBody User user){
-		   String message =   service.createUser(user);
+	ResponseEntity<String> registerUser(@Valid @RequestBody User user){
+		   String message =   service.registerUser(user);
 	           return new ResponseEntity<String>(message,HttpStatus.CREATED);
 	}
 }

@@ -17,7 +17,7 @@ import com.masai.service.UserService;
 import com.masai.utility.JWTUtility;
 
 @RestController
-public class HomeController {
+public class AuthenticationController {
 
     @Autowired
     private JWTUtility jwtUtility;
@@ -28,10 +28,6 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
-    public String home() {
-        return "Welcome to Daily Code Buffer!!";
-    }
 
     @PostMapping("/authenticate")
     public JwtResponse authenticate(@RequestBody JwtRequest jwtRequest) throws Exception{

@@ -45,7 +45,7 @@ public class Post {
 	
 	@NotNull(message = "body should not be null")
 	private String body;
-	
+	     
     @CreationTimestamp
 	private LocalDateTime createdAt;
 

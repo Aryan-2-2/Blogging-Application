@@ -4,6 +4,6 @@ import com.masai.model.User;
 
 public interface UserServiceIntr {
 
-	 public String createUser(User user);
+	 public String registerUser(User user);
 
 }

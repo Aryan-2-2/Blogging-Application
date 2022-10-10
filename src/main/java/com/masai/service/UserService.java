@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.masai.dao.UserDao;
+import com.masai.exception.InvalidCredentials;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -24,7 +25,7 @@ public class UserService implements UserDetailsService {
       com.masai.model.User user = repo.findByName(userName);
     	
       if(user==null) {
-     throw new UsernameNotFoundException("User Not Found");
+     throw new InvalidCredentials("Invalid Credentials");
       }
       return new User(user.getName(),user.getPassword(),new ArrayList<>());
     	
